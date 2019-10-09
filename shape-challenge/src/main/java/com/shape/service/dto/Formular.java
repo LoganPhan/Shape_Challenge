@@ -18,5 +18,5 @@ public class Formular implements Serializable{
 	private Long id;
 	private String name;
 	private String pattern;
-	private Value value;
+	private String value;
 }

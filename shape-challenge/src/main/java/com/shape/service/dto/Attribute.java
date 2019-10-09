@@ -19,5 +19,5 @@ public class Attribute implements Serializable{
 	private String name;
 	private String dataType;
 	private Boolean required;
-	private Value value;
+	private String value;
 }

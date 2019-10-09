@@ -2,12 +2,18 @@ package com.shape.ws.rest.vm;
 
 import java.io.Serializable;
 
+import com.shape.ws.rest.vm.FormularVM.FormularVMBuilder;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 public class AttributeVM implements Serializable{
 
@@ -19,5 +25,5 @@ public class AttributeVM implements Serializable{
 	private String name;
 	private String dataType;
 	private Boolean required;
-	private ValueVM value;
+	private String value;
 }
