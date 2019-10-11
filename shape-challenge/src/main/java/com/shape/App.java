@@ -23,6 +23,6 @@ public class App {
 	@Autowired
 	void configureObjectMapper(final ObjectMapper objectMapper) {
 		objectMapper.findAndRegisterModules();
-
 	}
+	
 }

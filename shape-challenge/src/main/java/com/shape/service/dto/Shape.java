@@ -1,15 +1,18 @@
 package com.shape.service.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Shape implements Serializable{
 
 	/**
@@ -22,4 +25,24 @@ public class Shape implements Serializable{
 	private Set<Attribute> attributes;
 	private Set<Formular> formulars;
 	private short level;
+	
+
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Shape shape = (Shape) o;
+        if (shape.getName() == null || getName() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), shape.getId());
+    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
 }

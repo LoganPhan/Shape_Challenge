@@ -3,8 +3,8 @@ package com.shape.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.shape.ws.rest.vm.ShapeVM;
-import com.shape.ws.rest.vm.UserVM;
+import com.shape.service.dto.Shape;
+import com.shape.service.dto.User;
 
 /**
  *
@@ -17,13 +17,13 @@ public interface ShapeService {
 	 * API to list all the ​ shape​ ​ categories​ , each with its corresponding requirement sets of dimension, length and/or angle.
 	 * @return list of shapes
 	 */
-	List<ShapeVM> getShapes();
+	List<Shape> getShapes();
 	
-	HashMap<UserVM, ShapeVM> submit(UserVM user, ShapeVM shape);
+	HashMap<User, Shape> submit(User user, Shape shape);
 	
-	HashMap<UserVM, List<ShapeVM>> getShapesByUserId(Long userId);
+	HashMap<User, List<Shape>> getShapesByUserId(Long userId);
 	
-	ShapeVM save(ShapeVM shape);
+	Shape save(Shape shape);
 	
 	Boolean deleteById(Long id);
 	

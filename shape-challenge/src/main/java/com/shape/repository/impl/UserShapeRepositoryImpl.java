@@ -7,9 +7,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
+import com.shape.repository.UserRepository;
 import com.shape.repository.UserShapeRepository;
 import com.shape.service.dto.Shape;
 import com.shape.service.dto.User;
@@ -18,6 +20,9 @@ import com.shape.service.dto.User;
 public class UserShapeRepositoryImpl implements UserShapeRepository{
 	
 	private ConcurrentHashMap<Long, List<Shape>> userShapes = new ConcurrentHashMap<Long, List<Shape>>();
+	
+	@Autowired
+	private UserRepository userReposistory;
 	
 	@Override
 	public ConcurrentHashMap<Long, List<Shape>> getUserShapes() {
@@ -38,6 +43,13 @@ public class UserShapeRepositoryImpl implements UserShapeRepository{
 		});
 		HashMap<Long, List<Shape>> result = new LinkedHashMap<>();
 		result.put(user.getId(), shapes);
+		return result;
+	}
+
+	@Override
+	public HashMap<User, List<Shape>> getShapesByUserId(Long userId) {
+		HashMap<User, List<Shape>> result = new LinkedHashMap<>();
+		result.put(userReposistory.getUserById(userId), userShapes.get(userId));
 		return result;
 	}
 

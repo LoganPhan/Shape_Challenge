@@ -17,4 +17,6 @@ public interface UserShapeRepository {
 	ConcurrentHashMap<Long, List<Shape>> getUserShapes();
 	
 	HashMap<Long, List<Shape>> save(User user, Shape shape);
+	
+	HashMap<User, List<Shape>> getShapesByUserId(Long userId);
 }

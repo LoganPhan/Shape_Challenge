@@ -14,4 +14,10 @@ public interface UserRepository {
 	Set<User> getUsers();
 	
 	User save(User user);
+	
+	User getUserById(Long userId);
+	
+	User getUserByUserName(String userName);
+	
+	boolean findUserByUserNameAndToken(String userName, String token);
 }

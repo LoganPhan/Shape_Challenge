@@ -1,14 +1,18 @@
 package com.shape.service.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
+import java.util.Set;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable{
 
 	/**
@@ -20,6 +24,26 @@ public class User implements Serializable{
 	private String name;
 	private String userName;
 	private String password;
-	private String role;
+	private Set<String> roles;
 	private String accessToken;
+	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        if (user.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
 }
