@@ -20,4 +20,6 @@ public interface UserRepository {
 	User getUserByUserName(String userName);
 	
 	boolean findUserByUserNameAndToken(String userName, String token);
+	
+	boolean deleteUserById(Long userId);
 }

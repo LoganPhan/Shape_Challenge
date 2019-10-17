@@ -18,7 +18,6 @@ public class Formular implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long id;
 	private String name;
 	private String pattern;
 	private String value;
@@ -32,13 +31,13 @@ public class Formular implements Serializable{
             return false;
         }
         Formular formular = (Formular) o;
-        if (formular.getId() == null || getId() == null) {
+        if (formular.getName() == null || getName() == null) {
             return false;
         }
-        return Objects.equals(getId(), formular.getId());
+        return Objects.equals(getName(), formular.getName());
     }
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(getId());
+		return Objects.hashCode(getName());
 	}
 }

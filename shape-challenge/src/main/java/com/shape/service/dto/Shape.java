@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
+import com.shape.service.dto.Formular.FormularBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,8 +26,6 @@ public class Shape implements Serializable{
 	private String name;
 	private Set<Attribute> attributes;
 	private Set<Formular> formulars;
-	private short level;
-	
 
 	@Override
     public boolean equals(Object o) {
@@ -41,6 +41,7 @@ public class Shape implements Serializable{
         }
         return Objects.equals(getId(), shape.getId());
     }
+	
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(getId());

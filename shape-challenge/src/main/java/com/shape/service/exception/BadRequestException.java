@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author logan
  *
  */
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException {
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class BadRequestException extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	 public NotFoundException(String message) {
+	 public BadRequestException(String message) {
 	        super(message);
 	 }
 	

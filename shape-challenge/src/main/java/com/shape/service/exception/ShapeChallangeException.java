@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author logan
  *
  */
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException {
+@ResponseStatus(HttpStatus.EXPECTATION_FAILED)
+public class ShapeChallangeException extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	 public NotFoundException(String message) {
+	 public ShapeChallangeException(String message) {
 	        super(message);
 	 }
 	

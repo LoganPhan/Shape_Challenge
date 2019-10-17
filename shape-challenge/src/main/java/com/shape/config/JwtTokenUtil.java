@@ -48,6 +48,7 @@ public class JwtTokenUtil implements Serializable {
 	// generate token for user
 	public String generateToken(UserDetails user) {
 		Map<String, Object> claims = new HashMap<>();
+		claims.put("scopes", user.getAuthorities());
 		return doGenerateToken(claims, user.getUsername());
 	}
 
@@ -58,9 +59,13 @@ public class JwtTokenUtil implements Serializable {
 	// Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
 	// compaction of the JWT to a URL-safe string
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
-		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+		return Jwts.builder()
+				.setClaims(claims)
+				.setSubject(subject)
+				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-				.signWith(SignatureAlgorithm.HS512, SecurityConstants.JWT_SECRET).compact();
+				.signWith(SignatureAlgorithm.HS512, SecurityConstants.JWT_SECRET)
+				.compact();
 	}
 
 	// validate token

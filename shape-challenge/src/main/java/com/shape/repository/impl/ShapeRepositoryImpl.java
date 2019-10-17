@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.shape.repository.ShapeRepository;
 import com.shape.service.dto.Shape;
+import com.shape.service.exception.NotFoundException;
 
 @Component
 public class ShapeRepositoryImpl implements ShapeRepository{
@@ -23,7 +24,9 @@ public class ShapeRepositoryImpl implements ShapeRepository{
 
 	@Override
 	public synchronized Shape save(Shape shape) {
-		shape.setId(sequence.incrementAndGet());
+		if(shape.getId() == null) {
+			shape.setId(sequence.incrementAndGet());
+		}
 		shapes.add(shape);
 		return shape;
 	}
@@ -35,5 +38,16 @@ public class ShapeRepositoryImpl implements ShapeRepository{
 	@Override
 	public Boolean deleteById(Long shapeId) {
 		return shapes.removeIf(item -> item.getId().equals(shapeId));
+	}
+
+	@Override
+	public Shape getShapeById(Long id) {
+		return shapes.stream().filter(shape -> shape.getId().equals(id)).findFirst()
+				.orElseThrow(() -> new NotFoundException(String.format("Shape not found by Id: %s", id)));
+	}
+
+	@Override
+	public void deleteAll() {
+		shapes.clear();
 	}
 }

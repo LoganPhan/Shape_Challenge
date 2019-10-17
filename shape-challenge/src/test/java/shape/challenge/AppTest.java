@@ -1,4 +1,4 @@
-package shape_challenge;
+package shape.challenge;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

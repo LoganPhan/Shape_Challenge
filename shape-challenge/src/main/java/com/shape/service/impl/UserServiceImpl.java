@@ -3,6 +3,8 @@ package com.shape.service.impl;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +17,7 @@ import com.shape.service.dto.User;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -59,6 +61,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean findUserByUserNameAndToken(String userName, String token) {
 		return userRepository.findUserByUserNameAndToken(userName, token);
+	}
+
+	@Override
+	public boolean deleteUserById(Long userId) {
+		return userRepository.deleteUserById(userId);
 	}
 
 }
