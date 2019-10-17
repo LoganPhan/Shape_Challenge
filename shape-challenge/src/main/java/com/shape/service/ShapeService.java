@@ -26,5 +26,7 @@ public interface ShapeService {
 	Shape save(Shape shape);
 
 	Boolean deleteById(Long id);
+	
+	void deleteAll();
 
 }

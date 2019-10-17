@@ -4,13 +4,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.shape.repository.ShapeRepository;
 import com.shape.service.dto.Shape;
 import com.shape.service.exception.NotFoundException;
 
-@Component
+@Repository
 public class ShapeRepositoryImpl implements ShapeRepository{
 	
 	private final AtomicLong sequence = new AtomicLong(0);

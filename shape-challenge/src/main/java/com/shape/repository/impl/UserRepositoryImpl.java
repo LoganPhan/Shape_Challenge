@@ -7,16 +7,15 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.shape.repository.UserRepository;
 import com.shape.service.dto.Role;
 import com.shape.service.dto.User;
 import com.shape.service.exception.BadRequestException;
 import com.shape.service.exception.NotFoundException;
-import com.shape.service.impl.UserServiceImpl;
 
-@Component
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 	
 	private final Logger log = LoggerFactory.getLogger(UserRepositoryImpl.class);

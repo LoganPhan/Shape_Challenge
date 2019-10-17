@@ -107,4 +107,9 @@ public class ShapeServiceImpl implements ShapeService {
 	public Shape getShapeById(Long id) {
 		return shapeRepository.getShapeById(id);
 	}
+
+	@Override
+	public void deleteAll() {
+		shapeRepository.deleteAll();
+	}
 }

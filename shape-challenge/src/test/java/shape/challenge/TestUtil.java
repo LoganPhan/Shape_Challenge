@@ -138,7 +138,20 @@ public final class TestUtil {
         registrar.registerFormatters(dfcs);
         return dfcs;
     }
-
+    
+    /**
+     * Convert an object to JSON byte array.
+     *
+     * @param object
+     *            the object to convert
+     * @return the JSON byte array
+     * @throws IOException
+     */
+    public static String convertObjectToJson(Object object)
+            throws IOException {
+    	String str = mapper.writeValueAsString(object);
+        return str;
+    }
     /**
      * Gets the object mapper.
      *
