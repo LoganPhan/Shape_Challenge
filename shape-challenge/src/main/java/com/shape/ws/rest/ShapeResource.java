@@ -29,20 +29,20 @@ import com.shape.service.dto.Shape;
 public class ShapeResource {
 
 	private final Logger log = LoggerFactory.getLogger(ShapeResource.class);
-
-	public ShapeResource() {
-		
-	}
-	@Autowired
+	
 	private ShapeService shapeService;
-
-	@RequestMapping(value = "/shapes", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+	
+	public ShapeResource(ShapeService shapeService ) {
+		this.shapeService = shapeService;
+	}
+	
+	@GetMapping("/shapes")
 	@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 	public ResponseEntity<List<Shape>> getShapes() {
 		return new ResponseEntity<>(shapeService.getShapes(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/shapes", method = RequestMethod.POST, produces= MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/shapes")
 	@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
 	public ResponseEntity<Shape> createShape(@RequestBody Shape shape) throws URISyntaxException {
 		if(shape.getId() != null) {

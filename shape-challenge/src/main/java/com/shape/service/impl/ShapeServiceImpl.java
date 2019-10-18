@@ -67,6 +67,9 @@ public class ShapeServiceImpl implements ShapeService {
 				if (!pattern.contains(attribute.getName()))
 					throw new BadRequestException(
 							String.format("Fomular pattern should contain attribute '%s' !", attribute.getName()));
+				if(ObjectUtils.isEmpty(attribute.getDataType())) {
+					throw new BadRequestException(String.format("Data Type is required for %s attribute", attribute.getName()));
+				}
 			});
 		});
 	}
